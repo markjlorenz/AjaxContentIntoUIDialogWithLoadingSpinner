@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery modal with remote source and loading spinner</title>
+
+		<link href="css/ui-darkness/jquery-ui-1.8.9.custom.css" media="screen" rel="stylesheet" type="text/css" />
+		<script src="js/jquery-1.4.4.min.js" type="text/javascript"></script>
+		<script src="js/jquery-ui-1.8.9.custom.min.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			jQuery(function($){
+				$('a').click(function(e){
+					e.preventDefault();
+					var $dialog = $('<div><div style="text-align:center;"><img src="images/ajax-loader.gif"/></div></div>');//the inline style is going to get clobberd by the ajax load anyway
+					$dialog.dialog();
+					$dialog.load($(e.target).attr('href'), function(){
+						$dialog.dialog("option", "position", "center");
+					});
+				});	
+			
+			});
+		</script>
+	</head>
+
+	<body>
+		<div> The point of this demo is to show an easy way to show a loading bar in a ui-dialog that loads ajax content.  Of course, on localhost it's not going to take long to load the content, so you may only see the loader blip on the screen before the ajax content loads and replaces it.</div>
+		
+		<a href="ajax-content.html">Click to Load Remote</a>
+	</body>
+</html>
+	
